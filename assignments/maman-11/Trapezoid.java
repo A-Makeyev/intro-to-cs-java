@@ -17,6 +17,7 @@ public class Trapezoid {
 
         // Finding the length of DC
 
+        
         double DC_length = Math.sqrt(Math.pow((AB_left_x - DC_left_x), 2) + Math.pow((AB_left_y - DC_left_y), 2));
 
 
