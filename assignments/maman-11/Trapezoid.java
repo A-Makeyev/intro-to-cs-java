@@ -1,3 +1,9 @@
+/*
+ *******************************************************************
+ * A program that calculates the area and perimeter of a trapezoid
+ *******************************************************************
+ */
+
 import java.util.Scanner;
 
 public class Trapezoid {
@@ -5,43 +11,42 @@ public class Trapezoid {
         Scanner scan = new Scanner(System.in);
 
         System.out.print("Please enter the left point coordinates of the base followed by its length: ");
-        int AB_left_x = scan.nextInt();
-        int AB_left_y = scan.nextInt();
-        int AB_base = scan.nextInt();
+        int _topLeft_xCoordinate = scan.nextInt();
+        int _topLeft_yCoordinate = scan.nextInt();
+        int _topBase = scan.nextInt();
 
         System.out.print("Please enter the left point coordinates of the base followed by its length: ");
-        int DC_left_x = scan.nextInt();
-        int DC_left_y = scan.nextInt();
-        int DC_base = scan.nextInt();
+        int _bottomLeft_xCoordinate = scan.nextInt();
+        int _bottomLeft_yCoordinate = scan.nextInt();
+        int _bottomBase = scan.nextInt();
 
 
-        // Finding the length of DC
+        // Finding the length of the left side
 
-        
-        double DC_length = Math.sqrt(Math.pow((AB_left_x - DC_left_x), 2) + Math.pow((AB_left_y - DC_left_y), 2));
+        double _leftSideLength = Math.sqrt(Math.pow((_topLeft_xCoordinate - _bottomLeft_xCoordinate), 2) + Math.pow((_topLeft_yCoordinate - _bottomLeft_yCoordinate), 2));
 
 
-        // Finding the length of CB
+        // Finding the length of the right side
 
-        double  DC_right_x = DC_left_x + DC_base,
-                DC_right_y = DC_left_y;
+        double  _topRight_xCoordinate = _topLeft_xCoordinate + _topBase,
+                _topRight_yCoordinate = _topLeft_yCoordinate;
 
-        double AB_right_x = AB_left_x + AB_base,
-               AB_right_y = AB_left_y;
+        double _bottomRight_xCoordinate = _bottomLeft_xCoordinate + _bottomBase,
+                _ButtomRight_yCoordinate = _bottomLeft_yCoordinate;
 
-        double CB_length = Math.sqrt(Math.pow((DC_right_x - AB_right_x), 2) + Math.pow((DC_right_y - AB_right_y), 2));
+        double _rightSideLength = Math.sqrt(Math.pow((_topRight_xCoordinate - _bottomRight_xCoordinate), 2) + Math.pow((_topRight_yCoordinate - _ButtomRight_yCoordinate), 2));
 
 
         // Calculating the height, area and perimeter of the trapezoid
 
         double height, area, perimeter;
 
-        height = DC_left_y - AB_left_y;
+        height = _topLeft_yCoordinate - _bottomLeft_yCoordinate;
 
-        area = (height * (AB_base + DC_base)) / 2;
+        area = Math.abs((height * (_bottomBase + _topBase)) / 2);
 
-        // Perimeter = AB_base + DC_base + DC_length + CB_length
-        perimeter = Math.round((AB_base + DC_base + DC_length + CB_length) * 100) / (100 * 1.0);
+        // Perimeter = _bottomBase + _topBase + _leftSideLength + _rightSideLength
+        perimeter = Math.round((_bottomBase + _topBase + _leftSideLength + _rightSideLength) * 100) / (100 * 1.0);
 
 
         System.out.println("\nThe area of the trapezoid is: " + area);
