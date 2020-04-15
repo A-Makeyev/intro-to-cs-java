@@ -1,18 +1,20 @@
 public class WeightWatch {
 
-    private double _weight;
+    private double weight;
     private double _height;
 
-
-    public WeightWatch(double w, double h) {
-        if(w > 0) {
-            _weight = w;
+	// "this" refers to the variable we declared above
+    public WeightWatch(double weight, double height) {
+    	// "this" is only required when the name of the parameter
+        // is the same as the variable we declared (weight = weight)
+        if(weight > 0) {
+            this.weight = weight;
         } else {
-            _weight = 1;
+            this.weight = 1;
         }
-
-        if(h > 0) {
-            _height = h;
+        // here the names are different therefore no need for "this"
+        if(height > 0) {
+            _height = height;
         } else {
             _height = 1;
         }
@@ -20,7 +22,7 @@ public class WeightWatch {
 
 
     public double bmi() {
-        double bmi = _weight / Math.pow(_height, 2);
+        double bmi = weight / Math.pow(_height, 2);
         bmi = Math.round(bmi * 100) / (100 * 1.0);
         return bmi;
     }
