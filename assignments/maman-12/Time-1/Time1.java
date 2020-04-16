@@ -190,8 +190,16 @@ public class Time1 {
 
         int hours = timeInMinutesAfter / 60;
 
+        // in case of a negative number
+        if (minutesToAdd < 0) {
+            if (hours > 23)
+                hours = hours - 24;
+            else // a day has 24 hours!
+                hours = hours + 24;
+        }
+
         if (hours > 23)
-            hours = hours - 24; // a day has 24 hours!
+            hours = hours - 24;
 
         int minutes = Math.abs(timeInMinutesAfter) % 60;
 
