@@ -1,5 +1,5 @@
 /**
- * This class represents a time in hours & minutes
+ * This class represents a certain time in hours & minutes
  *
  * @author Anatoly Makeyev
  * @version 1.0.0@2020
@@ -10,7 +10,6 @@ public class Time1 {
 
     private int _hour;
     private int _minute;
-
 
 
     /**
@@ -66,7 +65,7 @@ public class Time1 {
 
     /**
      * Sets the hour
-     * @param hourToSet
+     * @param hourToSet hour to be set
      */
     public void setHour(int hourToSet) {
         if (hourToSet >= 0 && hourToSet <= 23)
@@ -74,7 +73,7 @@ public class Time1 {
     }
     /**
      * Sets the minute
-     * @param minuteToSet
+     * @param minuteToSet minute to be set
      */
     public void setMinute(int minuteToSet) {
         if (minuteToSet >= 0 && minuteToSet <= 59)
@@ -116,16 +115,88 @@ public class Time1 {
     }
 
 
+    /**
+     * checks whether the times are equal
+     *
+     * @param otherTime an object that represents time
+     * @return true if they are, false otherwise
+     */
+
+    public boolean equals(Time1 otherTime) {
+        return this._hour == otherTime._hour && this._minute == otherTime._minute;
+    }
 
 
+    /**
+     * checks whether a time is before another time
+     * e.g. 07:30 is before 13:24 in which case returns true
+     *
+     * @param otherTime an object that represents time
+     * @return true if it is, false otherwise
+     */
+
+    public boolean before(Time1 otherTime) {
+        if (this._hour < otherTime._hour) {
+            return true;
+        }
+        if (this._hour == otherTime._hour && this._minute < otherTime._minute) {
+            return true;
+        }
+        return false;
+    }
 
 
+    /**
+     * checks whether a time is after another time
+     * e.g. 13:24 is after 07:30 in which case returns true
+     * "this" refers to Time1 (if otherTime is before Time1 return true)
+     *
+     * @param otherTime an object that represents time
+     * @return true if it is, false otherwise
+     */
+
+    public boolean after(Time1 otherTime) {
+        return otherTime.before(this);
+    }
 
 
+    /**
+     * checks difference between times
+     *
+     * @param otherTime an object that represents time
+     * @return the time difference in minutes
+     */
+
+    public int difference(Time1 otherTime) {
+        return Math.abs(((this._hour - otherTime._hour) * 60) + (this._minute - otherTime._minute));
+    }
 
 
+    /**
+     * adds minutes to a time object
+     * if the number is negative it reduces it instead
+     * creates a new object with the updated time
+     * the original object doesn't change
+     * e.g. time.addMinutes(25); ~> time object will stay the same
+     * time = time.addMinutes(25); ~> will update the current object
+     *
+     * @param minutesToAdd represents minutes to add
+     * @return new time object with added minutes
+     */
 
+    public Time1 addMinutes(int minutesToAdd) {
+        int timeInMinutesBefore = (this._hour * 60) + this._minute;
+        int timeInMinutesAfter = timeInMinutesBefore + minutesToAdd;
 
+        int hours = timeInMinutesAfter / 60;
+
+        if (hours > 23)
+            hours = hours - 24; // a day has 24 hours!
+
+        int minutes = Math.abs(timeInMinutesAfter) % 60;
+
+        return new Time1(hours, minutes);
+    }
 
 
 }
