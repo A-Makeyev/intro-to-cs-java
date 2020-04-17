@@ -69,12 +69,12 @@ public class Main {
         // trying a negative number
 
         System.out.print(finalTime.toString());
-        System.out.print(" minus 120 minutes will be: ");
-        finalTime = finalTime.addMinutes(-120);
+        System.out.print(" minus 1445 minutes will be: ");
+        finalTime = finalTime.addMinutes(-1445);
         System.out.println(finalTime);
 
 
-        if (!finalTime.toString().equals("23:00")) {
+        if (!finalTime.toString().equals("00:55")) {
             System.err.println("There was a problem with the time machine");
         } else {
             System.out.println("Went back in time successfully!");
