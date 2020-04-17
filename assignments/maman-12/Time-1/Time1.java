@@ -185,26 +185,25 @@ public class Time1 {
      */
 
     public Time1 addMinutes(int minutesToAdd) {
-        int timeInMinutesBefore = (this._hour * 60) + this._minute;
-        int timeInMinutesAfter = timeInMinutesBefore + minutesToAdd;
+        int timeInMinutesBefore, timeInMinutesAfter, newDay, hours, minutes;
 
-        int hours = timeInMinutesAfter / 60;
+        timeInMinutesBefore = (this._hour * 60) + this._minute;
+        timeInMinutesAfter = timeInMinutesBefore + minutesToAdd;
 
-        // in case of a negative number
-        if (minutesToAdd < 0) {
-            if (hours > 23)
-                hours = hours - 24;
-            else // a day has 24 hours!
-                hours = hours + 24;
+        if (timeInMinutesAfter < 0) {
+            newDay = timeInMinutesAfter % 1440;
+            newDay += 1440; // a day has 1440 minutes!
+
+            hours = newDay / 60;
+            minutes = newDay % 60;
+
+            return new Time1(hours, minutes);
         }
 
-        if (hours > 23)
-            hours = hours - 24;
-
-        int minutes = Math.abs(timeInMinutesAfter) % 60;
+        timeInMinutesAfter %= 1440;
+        hours = timeInMinutesAfter / 60;
+        minutes = timeInMinutesAfter % 60;
 
         return new Time1(hours, minutes);
     }
-
-
 }
