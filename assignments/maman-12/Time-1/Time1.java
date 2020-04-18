@@ -82,7 +82,7 @@ public class Time1 {
 
 
     /**
-     * returns a String that represents this hour
+     * returns a String that represents this time
      * note: overrides default method toString()
      *
      * @return String that represents this hour as: hh:mm
