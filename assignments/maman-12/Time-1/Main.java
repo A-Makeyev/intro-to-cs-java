@@ -11,6 +11,8 @@ public class Main {
         System.out.println("Minutes from midnight: " + time.minFromMidnight());
 
         Time1 otherTime = new Time1(7, 30);
+        
+        System.out.println("Other Time: " + otherTime.toString());
 
         System.out.println("Time equals to other time? " + time.equals(otherTime));
         System.out.println();
