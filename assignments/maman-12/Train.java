@@ -18,20 +18,23 @@ public class Train {
 
 
     /**
-     * Constructor:
-     * creates a new Train object
+     * Constructor of class Train. Constructs a new train. duration should be positive,
+     * otherwise it should be set to 0. passengers should be positive, otherwise it should be set to 0.
+     * passengers should be less than seats otherwise it should be set to seats. seats should be positive,
+     * otherwise it should be set to 0. price should be positive, otherwise it should be set to 0.
      *
      * @param destination is the destination as String
-     * @param departure is a time object as hh:mm
+     * @param hour is the departure hour
+     * @param minute is the departure minute
      * @param duration is the commute duration as int
      * @param passengers is the number of passengers as int
      * @param seats is the number of seats as int
      * @param price is the price as it
      */
 
-    public Train(String destination, Time1 departure, int duration, int passengers, int seats, int price) {
+    public Train(String destination, int hour, int minute, int duration, int passengers, int seats, int price) {
 
-        this._departure = departure;
+        this._departure = new Time1(hour, minute);
         this._destination = destination;
 
         if (seats < 0)
@@ -245,6 +248,46 @@ public class Train {
     }
 
 
+    /**
+     * calculates the total price of all passengers on the train
+     *
+     * @return the total price
+     */
+
+    public int totalPrice() {
+        return this._passengers * this._price;
+    }
 
 
+    /**
+     * asserts whether a train arrives before another train
+     *
+     * @param otherTrain
+     * @return true if it is, false otherwise
+     */
+
+    public boolean arrivesEarlier(Train otherTrain) {
+        Time1 trainArrival = new Time1(this.getArrivalTime());
+        Time1 otherTrainArrival = new Time1(otherTrain.getArrivalTime());
+
+        return trainArrival.minFromMidnight() < otherTrainArrival.minFromMidnight();
+    }
+
+
+    /**
+     * prints the train details as follows:
+     * "Train to (destination) departs at (departure). Train is full"
+     * if the train is not full it will print accordingly
+     * note: overrides default method toString()
+     *
+     * @return train details
+     */
+
+    public String toString() {
+        if (this.isFull()) {
+            return "Train to " + this._destination + " departs at " + this._departure + ". Train is full.";
+        } else {
+            return "Train to " + this._destination + " departs at " + this._departure + ". Train is not full.";
+        }
+    }
 }
