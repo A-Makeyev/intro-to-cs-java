@@ -135,7 +135,10 @@ public class Train {
      * @param destination to be set
      */
     public void setDestination(String destination) {
-        this._destination = destination;
+        if (destination != null && !destination.isEmpty())
+            this._destination = destination;
+        else
+            this._destination = "Unknown Destination";
     }
     /**
      * Sets the departure
