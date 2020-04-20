@@ -28,15 +28,13 @@ public class WeightWatch {
     }
 
 
-    public void printBmi(double bmi) {
+    public String printBmi(double bmi) {
         if (bmi < 16) {
-            System.out.println("your bmi is: " + bmi + ". You are too thin.");
+            return "your bmi is: " + bmi + ". You are too thin.";
         } else if (bmi > 40) {
-            System.out.println("your bmi is: " + bmi + ". You should lose some weight.");
+            return "your bmi is: " + bmi + ". You should lose some weight.";
         } else {
-            System.out.println("your bmi is: " + bmi + ". Just right.");
+            return "your bmi is: " + bmi + ". Just right.";
         }
-    }
-
-    
+    } 
 }
