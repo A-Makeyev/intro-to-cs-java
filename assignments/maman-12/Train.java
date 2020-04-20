@@ -22,6 +22,7 @@ public class Train {
      * otherwise it should be set to 0. passengers should be positive, otherwise it should be set to 0.
      * passengers should be less than seats otherwise it should be set to seats. seats should be positive,
      * otherwise it should be set to 0. price should be positive, otherwise it should be set to 0.
+     * destination should not be empty, if it is, it will be set to unknown destination.
      *
      * @param destination is the destination as String
      * @param hour is the departure hour
@@ -35,7 +36,11 @@ public class Train {
     public Train(String destination, int hour, int minute, int duration, int passengers, int seats, int price) {
 
         this._departure = new Time1(hour, minute);
-        this._destination = destination;
+        
+        if (destination != null && !destination.isEmpty())
+            this._destination = destination;
+        else
+            this._destination = "Unknown Destination";
 
         if (seats < 0)
             this._seats = 0;
