@@ -12,12 +12,12 @@ public class Time1 {
     private int _minute;
 
 
-    final int TEN = 10;
     final int ZERO = 0;
     final int MAX_HOURS = 23;
     final int MAX_MINUTES = 59;
     final int HOUR_IN_MINUTES = 60;
     final int DAY_IN_MINUTES = 1440;
+    final int TWO_DIGIT_NUMBER = 10;
 
 
     /**
@@ -99,11 +99,11 @@ public class Time1 {
     public String toString() {
         String time = "";
 
-        if (this._hour < TEN)
+        if (this._hour < TWO_DIGIT_NUMBER)
             time += "0";
         time += this._hour + ":";
 
-        if(this._minute < TEN)
+        if(this._minute < TWO_DIGIT_NUMBER)
             time += "0";
         time += _minute;
 

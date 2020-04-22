@@ -11,12 +11,12 @@ public class Time2 {
     private int _minFromMid;
 
 
-    final int TEN = 10;
     final int ZERO = 0;
     final int MAX_HOURS = 23;
     final int MAX_MINUTES = 59;
     final int HOUR_IN_MINUTES = 60;
     final int DAY_IN_MINUTES = 1440;
+    final int TWO_DIGIT_NUMBER = 10;
 
     /**
      * Constructor:
@@ -159,11 +159,11 @@ public class Time2 {
         int hours = _minFromMid / HOUR_IN_MINUTES;
         int minutes = _minFromMid % HOUR_IN_MINUTES;
 
-        if (hours < TEN)
+        if (hours < TWO_DIGIT_NUMBER)
             time += "0";
         time += hours + ":";
 
-        if(minutes < TEN)
+        if(minutes < TWO_DIGIT_NUMBER)
             time += "0";
         time += minutes;
 
