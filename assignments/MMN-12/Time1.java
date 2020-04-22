@@ -12,7 +12,7 @@ public class Time1 {
     private int _minute;
 
 
-    final int ZERO = 0;
+    final int MIDNIGHT = 0;
     final int MAX_HOURS = 23;
     final int MAX_MINUTES = 59;
     final int HOUR_IN_MINUTES = 60;
@@ -29,13 +29,13 @@ public class Time1 {
      */
 
     public Time1(int hour, int minute) {
-        if (hour < ZERO || hour > MAX_HOURS)
-            this._hour = ZERO;
+        if (hour < MIDNIGHT || hour > MAX_HOURS)
+            this._hour = MIDNIGHT;
         else
             this._hour = hour;
 
-        if (minute < ZERO || minute > MAX_MINUTES)
-            this._minute = ZERO;
+        if (minute < MIDNIGHT || minute > MAX_MINUTES)
+            this._minute = MIDNIGHT;
         else
             this._minute = minute;
 
@@ -76,7 +76,7 @@ public class Time1 {
      * @param hourToSet hour to be set
      */
     public void setHour(int hourToSet) {
-        if (hourToSet >= ZERO && hourToSet <= MAX_HOURS)
+        if (hourToSet >= MIDNIGHT && hourToSet <= MAX_HOURS)
             this._hour = hourToSet;
     }
     /**
@@ -84,7 +84,7 @@ public class Time1 {
      * @param minuteToSet minute to be set
      */
     public void setMinute(int minuteToSet) {
-        if (minuteToSet >= ZERO && minuteToSet <= MAX_MINUTES)
+        if (minuteToSet >= MIDNIGHT && minuteToSet <= MAX_MINUTES)
             this._minute = minuteToSet;
     }
 
@@ -199,7 +199,7 @@ public class Time1 {
         timeInMinutesBefore = (this._hour * HOUR_IN_MINUTES) + this._minute;
         timeInMinutesAfter = timeInMinutesBefore + minutesToAdd;
 
-        if (timeInMinutesAfter < ZERO) {
+        if (timeInMinutesAfter < MIDNIGHT) {
             newDay = timeInMinutesAfter % DAY_IN_MINUTES;
             newDay += DAY_IN_MINUTES; // a day has 1440 minutes!
 

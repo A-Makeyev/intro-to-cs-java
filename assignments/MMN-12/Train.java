@@ -16,7 +16,10 @@ public class Train {
     private int _price;
 
 
-    final int ZERO = 0;
+    final int EMPTY_SEATS = 0;
+    final int NONE_PASSENGERS = 0;
+    final int EMPTY_PRICE = 0;
+    final int NO_DURATION = 0;
 
 
     /**
@@ -44,26 +47,26 @@ public class Train {
         else
             this._destination = "Unknown Destination";
 
-        if (seats < ZERO)
-            this._seats = ZERO;
+        if (seats < EMPTY_SEATS)
+            this._seats = EMPTY_SEATS;
         else
             this._seats = seats;
 
-        if (passengers < ZERO)
-            this._passengers = ZERO;
+        if (passengers < NONE_PASSENGERS)
+            this._passengers = NONE_PASSENGERS;
         else
             this._passengers = passengers;
 
         if (passengers > seats)
             this._passengers = seats;
 
-        if (price < ZERO)
-            this._price = ZERO;
+        if (price < EMPTY_PRICE)
+            this._price = EMPTY_PRICE;
         else
             this._price = price;
 
-        if (duration < ZERO)
-            this._duration = ZERO;
+        if (duration < NO_DURATION)
+            this._duration = NO_DURATION;
         else
             this._duration = duration;
     }
@@ -157,8 +160,8 @@ public class Train {
      * @param duration to be set
      */
     public void setDuration(int duration) {
-        if (duration < ZERO)
-            this._duration = ZERO;
+        if (duration < NO_DURATION)
+            this._duration = NO_DURATION;
         else
             this._duration = duration;
     }
@@ -167,8 +170,8 @@ public class Train {
      * @param passengers to be set
      */
     public void setPassengers(int passengers) {
-        if (passengers < ZERO)
-            this._passengers = ZERO;
+        if (passengers < NONE_PASSENGERS)
+            this._passengers = NONE_PASSENGERS;
         else
             this._passengers = passengers;
     }
@@ -177,8 +180,8 @@ public class Train {
      * @param seats to be set
      */
     public void setSeats(int seats) {
-        if (seats < ZERO)
-            this._seats = ZERO;
+        if (seats < EMPTY_SEATS)
+            this._seats = EMPTY_SEATS;
         else
             this._seats = seats;
     }
@@ -187,8 +190,8 @@ public class Train {
      * @param price to be set
      */
     public void setPrice(int price) {
-        if (price < ZERO)
-            this._price = ZERO;
+        if (price < EMPTY_PRICE)
+            this._price = EMPTY_PRICE;
         else
             this._price = price;
     }
@@ -230,7 +233,7 @@ public class Train {
      */
 
     public boolean addPassengers(int passengersToAdd) {
-        if (passengersToAdd > ZERO) {
+        if (passengersToAdd > NONE_PASSENGERS) {
             if (passengersToAdd <= (this._seats - this._passengers)) {
                 this._passengers += passengersToAdd;
                 return true;

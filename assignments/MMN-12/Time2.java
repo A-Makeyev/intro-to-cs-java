@@ -11,7 +11,7 @@ public class Time2 {
     private int _minFromMid;
 
 
-    final int ZERO = 0;
+    final int MIDNIGHT = 0;
     final int MAX_HOURS = 23;
     final int MAX_MINUTES = 59;
     final int HOUR_IN_MINUTES = 60;
@@ -27,11 +27,11 @@ public class Time2 {
      */
 
     public Time2(int hours, int minutes) {
-        if (hours < ZERO || hours > MAX_HOURS)
-            hours = ZERO;
+        if (hours < MIDNIGHT || hours > MAX_HOURS)
+            hours = MIDNIGHT;
 
-        if ((minutes < ZERO || minutes > MAX_MINUTES))
-            minutes = ZERO;
+        if ((minutes < MIDNIGHT || minutes > MAX_MINUTES))
+            minutes = MIDNIGHT;
 
         _minFromMid = (hours * HOUR_IN_MINUTES) + minutes;
     }
@@ -70,7 +70,7 @@ public class Time2 {
      * @param hourToSet hour to be set
      */
     public void setHour(int hourToSet) {
-        if (hourToSet >= ZERO && hourToSet <= MAX_HOURS)
+        if (hourToSet >= MIDNIGHT && hourToSet <= MAX_HOURS)
             _minFromMid = hourToSet * HOUR_IN_MINUTES;
     }
     /**
@@ -78,7 +78,7 @@ public class Time2 {
      * @param minuteToSet minute to be set
      */
     public void setMinute(int minuteToSet) {
-        if (minuteToSet >= ZERO && minuteToSet <= MAX_MINUTES)
+        if (minuteToSet >= MIDNIGHT && minuteToSet <= MAX_MINUTES)
             _minFromMid += minuteToSet;
     }
 
@@ -188,7 +188,7 @@ public class Time2 {
 
         timeInMinutesAfter = _minFromMid + minutesToAdd;
 
-        if (timeInMinutesAfter < ZERO) {
+        if (timeInMinutesAfter < MIDNIGHT) {
             newDay = timeInMinutesAfter % DAY_IN_MINUTES;
             newDay += DAY_IN_MINUTES; // a day has 1440 minutes!
 
