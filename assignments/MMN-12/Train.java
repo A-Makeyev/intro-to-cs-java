@@ -79,9 +79,10 @@ public class Train {
         this._seats = copyTrain._seats;
         this._price = copyTrain._price;
         this._duration = copyTrain._duration;
-        this._departure = copyTrain._departure;
         this._passengers = copyTrain._passengers;
         this._destination = copyTrain._destination;
+        // define new object for anti aliasing!
+        this._departure = new Time1(copyTrain._departure);
     }
 
 
@@ -99,7 +100,8 @@ public class Train {
      * @return the departure
      */
     public Time1 getDeparture() {
-        return this._departure;
+    	// define new object for anti aliasing!
+        return new Time1(this._departure);
     }
     /**
      * Gets the duration
@@ -147,7 +149,8 @@ public class Train {
      * @param departure to be set
      */
     public void setDeparture(Time1 departure) {
-        this._departure = departure;
+    	// define new object for anti aliasing!
+        this._departure = new Time1(departure);
     }
     /**
      * Sets the duration

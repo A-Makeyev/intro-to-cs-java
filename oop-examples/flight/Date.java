@@ -6,9 +6,20 @@ public class Date {
 
 
     public Date(int day, int month, int year) {
-        this._day = day;
-        this._month = month;
-        this._year = year;
+        if (day > 0)
+            this._day = day;
+        else
+            this._day = 1;
+
+        if (month > 0)
+            this._month = month;
+        else
+            this._month = 1;
+
+        if (year > 1900)
+            this._year = year;
+        else
+            this._year = 1900;
     }
 
 
@@ -20,7 +31,7 @@ public class Date {
     }
 
 
-    public String printDate() {
+    public String toString() {
         String date = "";
         if (this._day < 10) {
             date += "0";
@@ -63,26 +74,34 @@ public class Date {
 
 
     // setters
-    public void set_day(int day) {
-        this._day = day;
+    public void setDay(int day) {
+        if (day > 0)
+            this._day = day;
+        else
+            this._day = 1;
     }
-    public void set_month(int month) {
-        this._month = month;
+    public void setMonth(int month) {
+        if (month > 0)
+            this._month = month;
+        else
+            this._month = 1;
     }
-    public void set_year(int year) {
-        this._year = year;
+    public void setYear(int year) {
+        if (year > 1900)
+            this._year = year;
+        else
+            this._year = 1900;
     }
 
     // getters
-    public int get_day() {
+    public int getDay() {
         return this._day;
     }
-    public int get_month() {
+    public int getMonth() {
         return this._month;
     }
-    public int get_year() {
+    public int getYear() {
         return this._year;
     }
-
 
 }
