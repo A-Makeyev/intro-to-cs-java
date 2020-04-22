@@ -5,18 +5,22 @@ public class TrainTester {
         // Time1 eveningDeparture = new Time1(19, 40);
 
         // Train
-        Train train = new Train("Vevey", 10, 30, 180, 50,50,25);
-        Train train_2 = new Train("Geneva", 19, 40, 60, 2,90,60);
+        Train train = new Train("Vevey", 10, 30, 180, 15,50,25);
+        Train train_2 = new Train("Geneva", 19, 40, 60, 90,90,60);
+
+        // to String
+        System.out.println("Train 1: " + train.toString());
+        System.out.println("Train 2: " + train_2.toString());
 
         // equal
-        System.out.print("Train details are equal? " + train.equal(train_2) + "\n");
+        System.out.print("\nTrain details are equal? " + train.equal(train_2) + "\n");
 
         // copy Train
         train_2 = new Train(train);
         System.out.print("Are they equal after the copy method? " + train.equal(train_2) + "\n\n");
 
         // get & set
-        Train train_3 = new Train("Lausanne", 10, 30, 360, 15,190,75);
+        Train train_3 = new Train("Amsterdam", 10, 30, 360, 15,190,75);
 
         System.out.println("Train 3 details: ");
         System.out.println("Destination: " + train_3.getDestination());
@@ -86,7 +90,7 @@ public class TrainTester {
         else
             System.out.println("Train 3 arrives earlier");
 
-        // to string
+
         System.out.println();
         System.out.println(train_3);
         System.out.println(train_4);

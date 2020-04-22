@@ -12,6 +12,14 @@ public class Time1 {
     private int _minute;
 
 
+    final int TEN = 10;
+    final int ZERO = 0;
+    final int MAX_HOURS = 23;
+    final int MAX_MINUTES = 59;
+    final int HOUR_IN_MINUTES = 60;
+    final int DAY_IN_MINUTES = 1440;
+
+
     /**
      * Constructor:
      * creates a new Time object
@@ -21,13 +29,13 @@ public class Time1 {
      */
 
     public Time1(int hour, int minute) {
-        if (hour < 0 || hour > 23)
-            this._hour = 0;
+        if (hour < ZERO || hour > MAX_HOURS)
+            this._hour = ZERO;
         else
             this._hour = hour;
 
-        if (minute < 0 || minute > 59)
-            this._minute = 0;
+        if (minute < ZERO || minute > MAX_MINUTES)
+            this._minute = ZERO;
         else
             this._minute = minute;
 
@@ -68,7 +76,7 @@ public class Time1 {
      * @param hourToSet hour to be set
      */
     public void setHour(int hourToSet) {
-        if (hourToSet >= 0 && hourToSet <= 23)
+        if (hourToSet >= ZERO && hourToSet <= MAX_HOURS)
             this._hour = hourToSet;
     }
     /**
@@ -76,7 +84,7 @@ public class Time1 {
      * @param minuteToSet minute to be set
      */
     public void setMinute(int minuteToSet) {
-        if (minuteToSet >= 0 && minuteToSet <= 59)
+        if (minuteToSet >= ZERO && minuteToSet <= MAX_MINUTES)
             this._minute = minuteToSet;
     }
 
@@ -91,11 +99,11 @@ public class Time1 {
     public String toString() {
         String time = "";
 
-        if (this._hour < 10)
+        if (this._hour < TEN)
             time += "0";
         time += this._hour + ":";
 
-        if(this._minute < 10)
+        if(this._minute < TEN)
             time += "0";
         time += _minute;
 
@@ -111,7 +119,7 @@ public class Time1 {
      */
 
     public int minFromMidnight() {
-        return (this._hour * 60) + this._minute;
+        return (this._hour * HOUR_IN_MINUTES) + this._minute;
     }
 
 
@@ -139,6 +147,7 @@ public class Time1 {
         if (this._hour < otherTime._hour) {
             return true;
         }
+
         if (this._hour == otherTime._hour && this._minute < otherTime._minute) {
             return true;
         }
@@ -168,7 +177,7 @@ public class Time1 {
      */
 
     public int difference(Time1 otherTime) {
-        return Math.abs(((this._hour - otherTime._hour) * 60) + (this._minute - otherTime._minute));
+        return Math.abs(((this._hour - otherTime._hour) * HOUR_IN_MINUTES) + (this._minute - otherTime._minute));
     }
 
 
@@ -187,22 +196,22 @@ public class Time1 {
     public Time1 addMinutes(int minutesToAdd) {
         int timeInMinutesBefore, timeInMinutesAfter, newDay, hours, minutes;
 
-        timeInMinutesBefore = (this._hour * 60) + this._minute;
+        timeInMinutesBefore = (this._hour * HOUR_IN_MINUTES) + this._minute;
         timeInMinutesAfter = timeInMinutesBefore + minutesToAdd;
 
-        if (timeInMinutesAfter < 0) {
-            newDay = timeInMinutesAfter % 1440;
-            newDay += 1440; // a day has 1440 minutes!
+        if (timeInMinutesAfter < ZERO) {
+            newDay = timeInMinutesAfter % DAY_IN_MINUTES;
+            newDay += DAY_IN_MINUTES; // a day has 1440 minutes!
 
-            hours = newDay / 60;
-            minutes = newDay % 60;
+            hours = newDay / HOUR_IN_MINUTES;
+            minutes = newDay % HOUR_IN_MINUTES;
 
             return new Time1(hours, minutes);
         }
 
-        timeInMinutesAfter %= 1440;
-        hours = timeInMinutesAfter / 60;
-        minutes = timeInMinutesAfter % 60;
+        timeInMinutesAfter %= DAY_IN_MINUTES;
+        hours = timeInMinutesAfter / HOUR_IN_MINUTES;
+        minutes = timeInMinutesAfter % HOUR_IN_MINUTES;
 
         return new Time1(hours, minutes);
     }

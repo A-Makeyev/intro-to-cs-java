@@ -6,11 +6,17 @@
  *
  */
 
-
 public class Time2 {
 
     private int _minFromMid;
 
+
+    final int TEN = 10;
+    final int ZERO = 0;
+    final int MAX_HOURS = 23;
+    final int MAX_MINUTES = 59;
+    final int HOUR_IN_MINUTES = 60;
+    final int DAY_IN_MINUTES = 1440;
 
     /**
      * Constructor:
@@ -21,13 +27,13 @@ public class Time2 {
      */
 
     public Time2(int hours, int minutes) {
-        if (hours < 0 || hours > 23)
-            hours = 0;
+        if (hours < ZERO || hours > MAX_HOURS)
+            hours = ZERO;
 
-        if ((minutes < 0 || minutes > 59))
-            minutes = 0;
+        if ((minutes < ZERO || minutes > MAX_MINUTES))
+            minutes = ZERO;
 
-        _minFromMid = (hours * 60) + minutes;
+        _minFromMid = (hours * HOUR_IN_MINUTES) + minutes;
     }
 
 
@@ -49,14 +55,14 @@ public class Time2 {
      * @return the hour
      */
     public int getHour() {
-        return _minFromMid / 60;
+        return _minFromMid / HOUR_IN_MINUTES;
     }
     /**
      * Gets the minute
      * @return the minute
      */
     public int getMinute() {
-        return _minFromMid % 60;
+        return _minFromMid % HOUR_IN_MINUTES;
     }
 
     /**
@@ -64,15 +70,15 @@ public class Time2 {
      * @param hourToSet hour to be set
      */
     public void setHour(int hourToSet) {
-        if (hourToSet >= 0 && hourToSet <= 23)
-            _minFromMid = hourToSet * 60;
+        if (hourToSet >= ZERO && hourToSet <= MAX_HOURS)
+            _minFromMid = hourToSet * HOUR_IN_MINUTES;
     }
     /**
      * Sets the minute
      * @param minuteToSet minute to be set
      */
     public void setMinute(int minuteToSet) {
-        if (minuteToSet >= 0 && minuteToSet <= 59)
+        if (minuteToSet >= ZERO && minuteToSet <= MAX_MINUTES)
             _minFromMid += minuteToSet;
     }
 
@@ -97,7 +103,8 @@ public class Time2 {
      */
 
     public boolean equals(Time2 otherTime) {
-        return _minFromMid / 60 == otherTime._minFromMid / 60 && _minFromMid % 60 == otherTime._minFromMid % 60;
+        return _minFromMid / HOUR_IN_MINUTES == otherTime._minFromMid / HOUR_IN_MINUTES
+               && _minFromMid % HOUR_IN_MINUTES == otherTime._minFromMid % HOUR_IN_MINUTES;
     }
 
 
@@ -149,14 +156,14 @@ public class Time2 {
 
     public String toString() {
         String time = "";
-        int hours = _minFromMid / 60;
-        int minutes = _minFromMid % 60;
+        int hours = _minFromMid / HOUR_IN_MINUTES;
+        int minutes = _minFromMid % HOUR_IN_MINUTES;
 
-        if (hours < 10)
+        if (hours < TEN)
             time += "0";
         time += hours + ":";
 
-        if(minutes < 10)
+        if(minutes < TEN)
             time += "0";
         time += minutes;
 
@@ -181,19 +188,19 @@ public class Time2 {
 
         timeInMinutesAfter = _minFromMid + minutesToAdd;
 
-        if (timeInMinutesAfter < 0) {
-            newDay = timeInMinutesAfter % 1440;
-            newDay += 1440; // a day has 1440 minutes!
+        if (timeInMinutesAfter < ZERO) {
+            newDay = timeInMinutesAfter % DAY_IN_MINUTES;
+            newDay += DAY_IN_MINUTES; // a day has 1440 minutes!
 
-            hours = newDay / 60;
-            minutes = newDay % 60;
+            hours = newDay / HOUR_IN_MINUTES;
+            minutes = newDay % HOUR_IN_MINUTES;
 
             return new Time2(hours, minutes);
         }
 
-        timeInMinutesAfter %= 1440;
-        hours = timeInMinutesAfter / 60;
-        minutes = timeInMinutesAfter % 60;
+        timeInMinutesAfter %= DAY_IN_MINUTES;
+        hours = timeInMinutesAfter / HOUR_IN_MINUTES;
+        minutes = timeInMinutesAfter % HOUR_IN_MINUTES;
 
         return new Time2(hours, minutes);
     }
