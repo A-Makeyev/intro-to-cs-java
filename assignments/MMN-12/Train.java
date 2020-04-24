@@ -43,7 +43,7 @@ public class Train {
         this._departure = new Time1(hour, minute);
 
         if (destination != null && !destination.isEmpty())
-            this._destination = destination;
+            this._destination = new String(destination);
         else
             this._destination = "Unknown Destination";
 
@@ -96,7 +96,7 @@ public class Train {
      * @return the destination
      */
     public String getDestination() {
-        return this._destination;
+        return new String(this._destination);
     }
     /**
      * Gets the departure
