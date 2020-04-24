@@ -17,9 +17,9 @@ public class Train {
 
 
     final int EMPTY_SEATS = 0;
-    final int NONE_PASSENGERS = 0;
     final int EMPTY_PRICE = 0;
     final int NO_DURATION = 0;
+    final int NONE_PASSENGERS = 0;
 
 
     /**
