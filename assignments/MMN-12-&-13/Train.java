@@ -15,11 +15,10 @@ public class Train {
     private int _seats;
     private int _price;
 
-
-    final int EMPTY_SEATS = 0;
-    final int EMPTY_PRICE = 0;
-    final int NO_DURATION = 0;
-    final int NONE_PASSENGERS = 0;
+    private final int EMPTY_SEATS = 0;
+    private final int EMPTY_PRICE = 0;
+    private final int NO_DURATION = 0;
+    private final int NONE_PASSENGERS = 0;
 
 
     /**
@@ -47,6 +46,16 @@ public class Train {
         else
             this._destination = "Unknown Destination";
 
+        if (duration < NO_DURATION)
+            this._duration = NO_DURATION;
+        else
+            this._duration = duration;
+
+        if (price < EMPTY_PRICE)
+            this._price = EMPTY_PRICE;
+        else
+            this._price = price;
+
         if (seats < EMPTY_SEATS)
             this._seats = EMPTY_SEATS;
         else
@@ -57,18 +66,10 @@ public class Train {
         else
             this._passengers = passengers;
 
-        if (passengers > seats)
-            this._passengers = seats;
-
-        if (price < EMPTY_PRICE)
-            this._price = EMPTY_PRICE;
+        if (this._passengers > this._seats)
+            this._passengers = this._seats;
         else
-            this._price = price;
-
-        if (duration < NO_DURATION)
-            this._duration = NO_DURATION;
-        else
-            this._duration = duration;
+        	this._passengers = this._passengers;
     }
 
 
@@ -84,7 +85,7 @@ public class Train {
         this._duration = copyTrain._duration;
         this._passengers = copyTrain._passengers;
         this._destination = copyTrain._destination;
-        // define new object for anti aliasing!
+        // define a new object for anti aliasing!
         this._departure = new Time1(copyTrain._departure);
     }
 
@@ -103,7 +104,7 @@ public class Train {
      * @return the departure
      */
     public Time1 getDeparture() {
-    	// define new object for anti aliasing!
+    	// define a new object for anti aliasing!
         return new Time1(this._departure);
     }
     /**
@@ -160,9 +161,7 @@ public class Train {
      * @param duration to be set
      */
     public void setDuration(int duration) {
-        if (duration < NO_DURATION)
-            this._duration = NO_DURATION;
-        else
+        if (duration >= NO_DURATION)
             this._duration = duration;
     }
     /**
@@ -170,19 +169,18 @@ public class Train {
      * @param passengers to be set
      */
     public void setPassengers(int passengers) {
-        if (passengers < NONE_PASSENGERS)
-            this._passengers = NONE_PASSENGERS;
-        else
-            this._passengers = passengers;
+        if (passengers > this._seats) {	
+        	this._passengers = this._seats;
+        } else if (passengers >= NONE_PASSENGERS) {
+        	this._passengers = passengers;
+        }
     }
     /**
      * Sets the seats
      * @param seats to be set
      */
     public void setSeats(int seats) {
-        if (seats < EMPTY_SEATS)
-            this._seats = EMPTY_SEATS;
-        else
+        if (seats >= this._passengers)
             this._seats = seats;
     }
     /**
@@ -190,9 +188,7 @@ public class Train {
      * @param price to be set
      */
     public void setPrice(int price) {
-        if (price < EMPTY_PRICE)
-            this._price = EMPTY_PRICE;
-        else
+        if (price >= EMPTY_PRICE)
             this._price = price;
     }
 
@@ -207,8 +203,8 @@ public class Train {
 
     public boolean equal(Train otherTrain) {
         return this._destination.equals(otherTrain._destination)
-               && this._seats == otherTrain._seats
-               && this._departure == otherTrain._departure;
+        	   && this._departure.equals(otherTrain._departure)
+               && this._seats == otherTrain._seats;
     }
 
 
@@ -233,11 +229,9 @@ public class Train {
      */
 
     public boolean addPassengers(int passengersToAdd) {
-        if (passengersToAdd > NONE_PASSENGERS) {
-            if (passengersToAdd <= (this._seats - this._passengers)) {
-                this._passengers += passengersToAdd;
-                return true;
-            }
+        if (this._passengers + passengersToAdd <= this._seats) {
+            this._passengers += passengersToAdd;
+            return true;
         }
         return false;
     }
@@ -285,10 +279,7 @@ public class Train {
      */
 
     public boolean arrivesEarlier(Train otherTrain) {
-        Time1 trainArrival = new Time1(this.getArrivalTime());
-        Time1 otherTrainArrival = new Time1(otherTrain.getArrivalTime());
-
-        return trainArrival.minFromMidnight() < otherTrainArrival.minFromMidnight();
+    	return this.getArrivalTime().before(otherTrain.getArrivalTime());
     }
 
 

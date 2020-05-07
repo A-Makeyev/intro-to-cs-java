@@ -11,13 +11,12 @@ public class Time1 {
     private int _hour;
     private int _minute;
 
-
-    final int MIDNIGHT = 0;
-    final int MAX_HOURS = 23;
-    final int MAX_MINUTES = 59;
-    final int HOUR_IN_MINUTES = 60;
-    final int DAY_IN_MINUTES = 1440;
-    final int TWO_DIGIT_NUMBER = 10;
+    private final int MIDNIGHT = 0;
+    private final int MAX_HOURS = 23;
+    private final int MAX_MINUTES = 59;
+    private final int HOUR_IN_MINUTES = 60;
+    private final int DAY_IN_MINUTES = 1440;
+    private final int TWO_DIGIT_NUMBER = 10;
 
 
     /**
@@ -29,16 +28,15 @@ public class Time1 {
      */
 
     public Time1(int hour, int minute) {
-        if (hour < MIDNIGHT || hour > MAX_HOURS)
-            this._hour = MIDNIGHT;
-        else
+        if (hour >= MIDNIGHT && hour <= MAX_HOURS)
             this._hour = hour;
-
-        if (minute < MIDNIGHT || minute > MAX_MINUTES)
-            this._minute = MIDNIGHT;
         else
-            this._minute = minute;
+            this._hour = MIDNIGHT;
 
+        if (minute >= MIDNIGHT && minute <= MAX_MINUTES)
+            this._minute = minute;
+        else
+            this._minute = MIDNIGHT;
     }
 
 
@@ -147,11 +145,7 @@ public class Time1 {
         if (this._hour < otherTime._hour) {
             return true;
         }
-
-        if (this._hour == otherTime._hour && this._minute < otherTime._minute) {
-            return true;
-        }
-        return false;
+        return (this._hour == otherTime._hour && this._minute < otherTime._minute);
     }
 
 
@@ -177,7 +171,8 @@ public class Time1 {
      */
 
     public int difference(Time1 otherTime) {
-        return Math.abs(((this._hour - otherTime._hour) * HOUR_IN_MINUTES) + (this._minute - otherTime._minute));
+        return this.minFromMidnight() - otherTime.minFromMidnight();
+        // return Math.abs(((this._hour - otherTime._hour) * HOUR_IN_MINUTES) + (this._minute - otherTime._minute));
     }
 
 
@@ -214,5 +209,12 @@ public class Time1 {
         minutes = timeInMinutesAfter % HOUR_IN_MINUTES;
 
         return new Time1(hours, minutes);
+
+        // int minutes = this.minFromMidnight();
+        // minutes += minutesToAdd;
+        // minutes %= 1440;
+        // if (minutes < 0)
+        //     minutes += 1440;
+        // return new Time1(minutes / 60, minutes % 60);
     }
 }

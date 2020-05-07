@@ -10,13 +10,13 @@ public class Time2 {
 
     private int _minFromMid;
 
+    private final int MIDNIGHT = 0;
+    private final int MAX_HOURS = 23;
+    private final int MAX_MINUTES = 59;
+    private final int HOUR_IN_MINUTES = 60;
+    private final int DAY_IN_MINUTES = 1440;
+    private final int TWO_DIGIT_NUMBER = 10;
 
-    final int MIDNIGHT = 0;
-    final int MAX_HOURS = 23;
-    final int MAX_MINUTES = 59;
-    final int HOUR_IN_MINUTES = 60;
-    final int DAY_IN_MINUTES = 1440;
-    final int TWO_DIGIT_NUMBER = 10;
 
     /**
      * Constructor:
