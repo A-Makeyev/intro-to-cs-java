@@ -201,7 +201,7 @@ public class Train {
      * @return true if they are, false otherwise
      */
 
-    public boolean equal(Train otherTrain) {
+    public boolean equals(Train otherTrain) {
         return this._destination.equals(otherTrain._destination)
         	   && this._departure.equals(otherTrain._departure)
                && this._seats == otherTrain._seats;
