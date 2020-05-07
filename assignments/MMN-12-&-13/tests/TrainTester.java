@@ -13,11 +13,11 @@ public class TrainTester {
         System.out.println("Train 2: " + train_2.toString());
 
         // equal
-        System.out.print("\nTrain details are equal? " + train.equal(train_2) + "\n");
+        System.out.print("\nTrain details are equal? " + train.equals(train_2) + "\n");
 
         // copy Train
         train_2 = new Train(train);
-        System.out.print("Are they equal after the copy method? " + train.equal(train_2) + "\n\n");
+        System.out.print("Are they equal after the copy method? " + train.equals(train_2) + "\n\n");
 
         // get & set
         Train train_3 = new Train("Amsterdam", 10, 30, 360, 15,190,75);
