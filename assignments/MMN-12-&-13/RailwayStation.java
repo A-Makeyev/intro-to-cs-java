@@ -27,7 +27,7 @@ public class RailwayStation {
      * Adds a train commute to the train list
      * checks if the train list is not full, and if the same train doesn't exist already
      *
-     * @param train represents a Train object
+     * @param trainToAdd represents a Train object
      * @return true if the train was added successfully, false otherwise
      */
 
