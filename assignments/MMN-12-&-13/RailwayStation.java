@@ -75,7 +75,7 @@ public class RailwayStation {
                     this._numberOfTrains--;
                     return true;
 
-                } else if (x == _numberOfTrains - 1) {
+                } else if (x == this._numberOfTrains - 1) {
                     this._station[x] = null;
                     _numberOfTrains--;
                     return true;
