@@ -7,13 +7,13 @@ public class WeightWatch {
     public WeightWatch(double weight, double height) {
     	// "this" is only required when the name of the parameter
         // is the same as the variable we declared (weight = weight)
-        if(weight > 0) {
+        if (weight > 0) {
             this.weight = weight;
         } else {
             this.weight = 1;
         }
         // here the names are different therefore no need for "this"
-        if(height > 0) {
+        if (height > 0) {
             _height = height;
         } else {
             _height = 1;

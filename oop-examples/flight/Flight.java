@@ -22,26 +22,32 @@ public class Flight {
         flightDate = new Date(otherFlight.flightDate);
         destination = otherFlight.destination;
         origin = otherFlight.origin;
-     }
+    }
      
     public int getSeats() {
         return this.seats;
-     }
+    }
+
     public int getBooked() {
         return this.booked;
-     }
+    }
+
     public Date getFlightDate() {
         return new Date(flightDate);
-     }
+    }
+
     public String getdestination() {
         return this.destination;
-     }
+    }
+
     public String getOrigin() {
         return this.origin;
-     } 
+    } 
+
     public void setSeats(int seats) {
         this.seats = seats;
-     }
+    }
+
     public void  setBooked(int booked) {
         this.booked = booked;
     }
@@ -53,6 +59,7 @@ public class Flight {
     public void setdestination(String destination) {
         this.destination = destination;
     }
+    
     public void setOrigin(String origin) {
         this.origin = origin;
     } 
