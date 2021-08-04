@@ -70,7 +70,7 @@ public class RailwayStation {
                     this._station[y] = this._station[y + 1];
                 }
 
-                if (x != this._numberOfTrains -1) {
+                if (x != this._numberOfTrains - 1) {
                     this._station[this._numberOfTrains - 1] = null;
                     this._numberOfTrains--;
                     return true;
