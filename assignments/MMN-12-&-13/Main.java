@@ -5,37 +5,6 @@ import java.util.Random;
 public class Main {
     public static void main(String []args) {
 
-
-//        String [] arr = new String[10];
-//        arr[0] = "hi";
-//        arr[1] = "hi";
-//        arr[2] = "yo";
-//        arr[3] = "hi";
-//        arr[4] = "yo";
-//        arr[5] = "yo";
-//        arr[6] = "yo";
-//        arr[7] = "hi";
-
-//        int count = 0;
-//        String mostPopularPlace = "";
-//
-//        for(int x = 0; x < arr.length; x++) {
-//            int tempCount = 0;
-//            String tempPlace = arr[x];
-//            for(int y = 0; y < arr.length; y++) {
-//                if (arr[y] != null && arr[y].equals(tempPlace)) {
-//                    tempCount++;
-//                }
-//            }
-//            if (tempCount > count) {
-//                mostPopularPlace = tempPlace;
-//                count = tempCount;
-//            }
-//        }
-//        System.out.println(mostPopularPlace);
-
-
-
          /*****************************  RailwayStation CLASS TESTER ******************************/
         /*******************************************************************************************/
 
